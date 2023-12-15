@@ -19,9 +19,10 @@ app = dash.Dash(__name__,
                 server=server,
                 external_stylesheets=[dbc.themes.BOOTSTRAP, dbc.icons.BOOTSTRAP]
                 )
+#server = app.server
 
 # set debug flag
-DEBUG = True
+DEBUG = False
 
 # pull in data
 def get_config():
