@@ -1,6 +1,7 @@
 # Weather App for Maxwelton Farm
 
 # import modules
+import os
 import dash
 import numpy as np
 from dash import dcc, html, dash_table
@@ -26,9 +27,13 @@ DEBUG = False
 
 # pull in data
 def get_config():
+    # read location information
     config = configparser.ConfigParser()
     config.read('config.ini')
-    return config['openweathermap']
+    # get API key environment variable
+    # also needs to be stored on the server
+    config['weather']['api'] = os.environ.get('OPENWEATHER_API')
+    return config['weather']
 
 def get_weather_current(lat, long, api_key):
     # gets current weather at lat, long
